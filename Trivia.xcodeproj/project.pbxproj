@@ -12,6 +12,10 @@
 		0F3BBF0228C0E922008C41AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BBF0128C0E922008C41AA /* ViewController.swift */; };
 		0F3BBF0728C0E927008C41AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F3BBF0628C0E927008C41AA /* Assets.xcassets */; };
 		0F3BBF0A28C0E927008C41AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F3BBF0828C0E927008C41AA /* LaunchScreen.storyboard */; };
+		0F3BBF1928C239A0008C41AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BBF1828C239A0008C41AA /* LoginViewController.swift */; };
+		0F3BBF1C28C243EB008C41AA /* XibLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BBF1A28C243EB008C41AA /* XibLoginViewController.swift */; };
+		0F3BBF1D28C243EB008C41AA /* XibLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3BBF1B28C243EB008C41AA /* XibLoginViewController.xib */; };
+		0F3BBF2028C24804008C41AA /* AlkemyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BBF1F28C24804008C41AA /* AlkemyTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		0F3BBF0628C0E927008C41AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F3BBF0928C0E927008C41AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F3BBF0B28C0E927008C41AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F3BBF1828C239A0008C41AA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0F3BBF1A28C243EB008C41AA /* XibLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoginViewController.swift; sourceTree = "<group>"; };
+		0F3BBF1B28C243EB008C41AA /* XibLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XibLoginViewController.xib; sourceTree = "<group>"; };
+		0F3BBF1F28C24804008C41AA /* AlkemyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlkemyTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		0F3BBEFC28C0E922008C41AA /* Trivia */ = {
 			isa = PBXGroup;
 			children = (
+				0F3BBF1328C238EA008C41AA /* App */,
 				0F3BBEFD28C0E922008C41AA /* AppDelegate.swift */,
 				0F3BBEFF28C0E922008C41AA /* SceneDelegate.swift */,
 				0F3BBF0128C0E922008C41AA /* ViewController.swift */,
@@ -62,6 +71,57 @@
 				0F3BBF0B28C0E927008C41AA /* Info.plist */,
 			);
 			path = Trivia;
+			sourceTree = "<group>";
+		};
+		0F3BBF1328C238EA008C41AA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BBF1528C238FF008C41AA /* Shared */,
+				0F3BBF1428C238F4008C41AA /* Modules */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0F3BBF1428C238F4008C41AA /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BBF1628C2391F008C41AA /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		0F3BBF1528C238FF008C41AA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BBF1E28C247F1008C41AA /* Components */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		0F3BBF1628C2391F008C41AA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BBF1728C2392E008C41AA /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0F3BBF1728C2392E008C41AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BBF1828C239A0008C41AA /* LoginViewController.swift */,
+				0F3BBF1A28C243EB008C41AA /* XibLoginViewController.swift */,
+				0F3BBF1B28C243EB008C41AA /* XibLoginViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F3BBF1E28C247F1008C41AA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BBF1F28C24804008C41AA /* AlkemyTextField.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +184,7 @@
 			files = (
 				0F3BBF0A28C0E927008C41AA /* LaunchScreen.storyboard in Resources */,
 				0F3BBF0728C0E927008C41AA /* Assets.xcassets in Resources */,
+				0F3BBF1D28C243EB008C41AA /* XibLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +195,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F3BBF1C28C243EB008C41AA /* XibLoginViewController.swift in Sources */,
+				0F3BBF1928C239A0008C41AA /* LoginViewController.swift in Sources */,
 				0F3BBF0228C0E922008C41AA /* ViewController.swift in Sources */,
 				0F3BBEFE28C0E922008C41AA /* AppDelegate.swift in Sources */,
+				0F3BBF2028C24804008C41AA /* AlkemyTextField.swift in Sources */,
 				0F3BBF0028C0E922008C41AA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

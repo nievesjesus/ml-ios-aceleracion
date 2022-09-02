@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowsScene)
 
         // Instancio mi viewcontroller
-        let mainViewController = ViewController()
+        let mainViewController = LoginViewController()
         
         // Establezco el viewcontroller como el ROOTVIEWCONTROLLER
         window?.rootViewController = mainViewController

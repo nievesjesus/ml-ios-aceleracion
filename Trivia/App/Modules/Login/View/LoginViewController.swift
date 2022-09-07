@@ -12,6 +12,25 @@ final class LoginViewController: UIViewController {
     // MARK: View Code
     // UIImageView = Contenedor de la imagen
     // UIImage = Es el objeto de imagen
+    private lazy var scrollView: UIScrollView = {
+        let aScrollView = UIScrollView()
+        aScrollView.translatesAutoresizingMaskIntoConstraints = false
+        return aScrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let aView = UIView()
+        aView.translatesAutoresizingMaskIntoConstraints = false
+        return aView
+    }()
+    
+    private lazy var infoButton: UIButton = {
+        let aButton = UIButton()
+        aButton.translatesAutoresizingMaskIntoConstraints = false
+        aButton.setImage(UIImage(named: "info"), for: .normal)
+        return aButton
+    }()
+    
     private lazy var logoImageView: UIImageView = {
         let aImageView = UIImageView()
         aImageView.backgroundColor = .white
@@ -67,43 +86,64 @@ final class LoginViewController: UIViewController {
     private func setupView(){
         
         // Agregar vistas a la vista principal del view controller
-        self.view.addSubview(logoImageView)
-        self.view.addSubview(titleLabel)
-        self.view.addSubview(userLabel)
-        self.view.addSubview(userTextField)
-        self.view.addSubview(startButton)
+        self.view.addSubview(scrollView)
+        self.scrollView.addSubview(contentView)
+        self.contentView.addSubview(logoImageView)
+        self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(userLabel)
+        self.contentView.addSubview(userTextField)
+        self.contentView.addSubview(startButton)
+        self.contentView.addSubview(infoButton)
         
         // Estilos
         self.view.backgroundColor = UIColor(red: 0.77, green: 0.87, blue: 0.96, alpha: 1.00)
         
         // Asignar interacciones
         startButton.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
+        infoButton.addTarget(self, action: #selector(infoPressed), for: .touchDown)
     }
     
     private func setupConstraints(){
         NSLayoutConstraint.activate([
-            // Constraints del imageview
+            
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
+            contentView.heightAnchor.constraint(equalToConstant: 600),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            
+            infoButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            infoButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            infoButton.widthAnchor.constraint(equalToConstant: 32),
+            infoButton.heightAnchor.constraint(equalToConstant: 32),
+            
             logoImageView.widthAnchor.constraint(equalToConstant: 86),
             logoImageView.heightAnchor.constraint(equalToConstant: 86),
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant:40),
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant:40),
+            logoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 22),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  16),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:  -16),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant:  16),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant:  -16),
             
             userLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 48),
-            userLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  16),
-            userLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:  -16),
+            userLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant:  16),
+            userLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant:  -16),
             
             userTextField.topAnchor.constraint(equalTo: userLabel.bottomAnchor, constant: 8),
-            userTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  16),
-            userTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:  -16),
+            userTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant:  16),
+            userTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant:  -16),
             userTextField.heightAnchor.constraint(equalToConstant: 48),
             
-            startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 16),
-            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -26),
+            startButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 16),
+            startButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            startButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -26),
             startButton.heightAnchor.constraint(equalToConstant: 48),
             
         ])
@@ -112,6 +152,12 @@ final class LoginViewController: UIViewController {
     
     // MARK: Interactions
     @objc func buttonPressed () {
-        print("Empezamos por codigo")
+        let vc = QuetionViewController()
+        self.present(vc, animated: true)
+    }
+    
+    @objc func infoPressed () {
+        let vc = InfoViewController()
+        self.present(vc, animated: true)
     }
 }

@@ -22,4 +22,8 @@ class XibLoginViewController: UIViewController {
         print("Empezemos")
     }
 
+    @IBAction func infoPressed(_ sender: Any) {
+        let vc = InformationViewController(nibName: "InformationViewController", bundle: nil)
+        self.present(vc, animated: true)
+    }
 }
